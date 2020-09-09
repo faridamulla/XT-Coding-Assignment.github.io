@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>PS - XT Coding Assignment</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://api.spaceXdata.com/v3/launches?limit=100&launch_success=true"></script>
+  <script src="https://api.spaceXdata.com/v3/launches?limit=100&launch_success=true&land_success=true"></script>
+  <script src="https://api.spaceXdata.com/v3/launches?limit=100&launch_success=true&land_success=true&launch_year=2014"></script>
+  <script src="https://api.spaceXdata.com/v3/launches?limit=100"></script>
+</head>
+<body>
+<br>
+<div class="container-fluid">
+	<div class="product-thumbnail-page">
+		<h1>SpaceX Launch Programs</h1>
+		<div class="row">
+		    <div class="col-12 col-sm-3 col-md-3 col-lg-3">
+		    	<div class="card">
+			        <div class="card-body">
+			        	<div class="filter">Filter</div>
+			        	<div class="heading-left-side">Launch Year</div>
+			        	<div class="row">
+			        		<div class="col-12 col-sm-8 col-md-6 col-lg-6">
+				        		<div class="tabs-design active">
+				        			2006
+				        		</div>
+				        	</div>
+				        	<div class="col-12 col-sm-8 col-md-6 col-lg-6">
+				        		<div class="tabs-design">
+				        			2007
+				        		</div>
+				        	</div>
+				        	<div class="col-12 col-sm-8 col-md-6 col-lg-6">
+				        		<div class="tabs-design">
+				        			2007
+				        		</div>
+				        	</div>
+				        	<div class="col-12 col-sm-8 col-md-6 col-lg-6">
+				        		<div class="tabs-design">
+				        			2007
+				        		</div>
+				        	</div>
+				        	<div class="col-12 col-sm-8 col-md-6 col-lg-6">
+				        		<div class="tabs-design">
+				        			2007
+				        		</div>
+				        	</div>
+				        	<div class="col-12 col-sm-8 col-md-6 col-lg-6">
+				        		<div class="tabs-design">
+				        			2007
+				        		</div>
+				        	</div>
+				        	<div class="col-12 col-sm-8 col-md-6 col-lg-6">
+				        		<div class="tabs-design">
+				        			2007
+				        		</div>
+				        	</div>
+				        	<div class="col-12 col-sm-8 col-md-6 col-lg-6">
+				        		<div class="tabs-design">
+				        			2007
+				        		</div>
+				        	</div>
+				        	<div class="col-12 col-sm-8 col-md-6 col-lg-6">
+				        		<div class="tabs-design">
+				        			2007
+				        		</div>
+				        	</div>
+				        	<div class="col-12 col-sm-8 col-md-6 col-lg-6">
+				        		<div class="tabs-design">
+				        			2007
+				        		</div>
+				        	</div>
+				        	<div class="col-12 col-sm-8 col-md-6 col-lg-6">
+				        		<div class="tabs-design">
+				        			2007
+				        		</div>
+				        	</div>
+				        	<div class="col-12 col-sm-8 col-md-6 col-lg-6">
+				        		<div class="tabs-design">
+				        			2007
+				        		</div>
+				        	</div>
+				        	<div class="col-12 col-sm-8 col-md-6 col-lg-6">
+				        		<div class="tabs-design">
+				        			2007
+				        		</div>
+				        	</div>
+			        	</div>
+			        	<div class="heading-left-side">Successfull Launch</div>
+			        	<div class="row">
+			        		<div class="col-12 col-sm-8 col-md-6 col-lg-6">
+				        		<div class="tabs-design active">
+				        			True
+				        		</div>
+				        	</div>
+				        	<div class="col-12 col-sm-8 col-md-6 col-lg-6">
+				        		<div class="tabs-design">
+				        			False
+				        		</div>
+				        	</div>
+				        </div>
+				        <div class="heading-left-side">Successfull Landing</div>
+			        	<div class="row">
+			        		<div class="col-12 col-sm-8 col-md-6 col-lg-6">
+				        		<div class="tabs-design active">
+				        			True
+				        		</div>
+				        	</div>
+				        	<div class="col-12 col-sm-8 col-md-6 col-lg-6">
+				        		<div class="tabs-design">
+				        			False
+				        		</div>
+				        	</div>
+				        </div>
+			        </div>
+			    </div>
+		    </div>
+		    <div class="col-12 col-sm-9 col-md-9 col-lg-9">
+		    	<div class="row" id="item-container">
+				    
+		    </div>
+		</div>
+		
+	</div>
+	<div class="footer">
+		<p class="text-center"><b>Developed By </b>{Developer Name}</p>
+	  </div>
+</div>
+
+</body>
+<script>
+	 // api url 
+const api_url =  
+      "https://api.spacexdata.com/v3/launches?limit=100&launch_success=true&land_success=true"; 
+  
+// Defining async function 
+async function getapi(url) { 
+    
+    // Storing response 
+    const response = await fetch(url); 
+    
+    // Storing data in form of JSON 
+    var data = await response.json(); 
+   
+    show(data); 
+} 
+// Calling that async function 
+getapi(api_url); 
+function show(data) { 
+    let tab =  
+        ``; 
+    
+    // Loop to access all rows  
+    for (let r of data) { 
+        tab += `<div class="col-12 col-sm-6 col-md-6 col-lg-3"><div class="card box"><img class="card-img" src="${r.links.mission_patch}" alt="img"><div class="d-flex justify-content-end"><a href="#" class="card-link text-danger like"><i class="fas fa-heart"></i></a><div class="card-body"><h4 class="card-title">${r.mission_name}</h4><div class="card-subtitle mb-2"><b>Mission Ids:</b></div><ul><li>${r.mission_id}</li></ul><div class="card-subtitle mb-5"><b>Launch Year:</b> ${r.launch_year}</div><div class="card-subtitle mb-5 "><b>Successfull Launch:</b> false</div><div class="card-subtitle mb-5"><b>Successfull Landing:</b> false</div></div></div></div></div>`; 
+    } 
+    // Setting innerHTML as tab variable 
+    document.getElementById("item-container").innerHTML = tab; 
+}  
+</script>
+</html>
